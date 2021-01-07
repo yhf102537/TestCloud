@@ -1,0 +1,32 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yhf102537/mySpringCloudConfig  #远程仓库位置
+          username: 642129562@qq.com    #github 用户名
+          password: yhf102537.  #github 密码
+          default-label: main  # 分支
+          search-paths: configs   #目录文件
+          force-pull: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8060/eureka/
+#  instance:
+#    preferIpAddress: true
+#    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+#    lease-expiration-duration-in-seconds: 30
+#    lease-renewal-interval-in-seconds: 30
+
+security:
+  basic:
+    enable: false
+
